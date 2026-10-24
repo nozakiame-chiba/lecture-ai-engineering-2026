@@ -44,18 +44,21 @@ uv run pytest -q
 ### 5. 素のLLMに質問する
 
 ```bash
-uv run python -m app.ask "LoRAとは何ですか？"
-uv run python -m app.ask "AIE2026の講座の宿題にある「3レベル」とは何ですか？"
+uv run python -m app.ask
 ```
 
-1つ目は一般的な用語なので、おおむね正しい答えが返ります。2つ目は講座に固有の「宿題の3レベル」について質問します。素のLLMは講座のことを知らないため、「分からない」と答えるか、一般論でもっともらしく答えます。正しい内容は `data/glossary.json` の `homework-levels` にあります。モデルの答えと比べてみましょう。
+`質問>` が表示されたら、次の質問を順に入力します。
+
+```text
+LoRAとは何ですか？
+AIE2026の講座の宿題にある「3レベル」とは何ですか？
+```
+
+1つ目は一般的な用語なので、おおむね正しい答えが返ります。2つ目は講座に固有の「宿題の3レベル」について質問します。素のLLMは講座のことを知らないため、「分からない」と答えるか、一般論でもっともらしく答えます。正しい内容は `data/glossary.json` の `homework-levels` にあります。モデルの答えと比べてみましょう。会話を終えるときは `終了` と入力します。
 
 余裕があれば、ほかの講座に固有の質問も試してください。同じ質問でも実行ごとに答えが変わること、知らないことでも確信を持って答えることがあることに注目しましょう。
 
-```bash
-uv run python -m app.ask "AIE2026の講座で使う「lecNN-start タグ」とは何ですか？"
-uv run python -m app.ask "AIE2026の第2回では何を学びますか？"
-```
+同じ対話の中で「AIE2026の講座で使う『lecNN-start タグ』とは何ですか？」「AIE2026の第2回では何を学びますか？」なども質問してみましょう。
 
 ### 6. Copilot でトークン数を表示させる
 
@@ -88,7 +91,9 @@ GitHub の自分の fork で、`lec01` → `main` の PR を作成します。**
 モデルの切り替え例：
 
 ```bash
-AIE_MODEL=gemini-3.5-flash uv run python -m app.ask "LoRAとは何ですか？"
+AIE_MODEL=gemini-3.5-flash uv run python -m app.ask
 ```
+
+起動後に `LoRAとは何ですか？` と入力します。
 
 temperature を変えるには、`generate_content` の `config` 引数を調べてみましょう。
