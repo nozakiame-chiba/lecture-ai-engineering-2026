@@ -27,8 +27,10 @@ AIエンジニアリング実践講座（AIE2026）の演習と宿題で使う�
 
 ```bash
 uv run pytest -q
-uv run python -m app.ask "LoRAとは何ですか？"
+uv run python -m app.ask
 ```
+
+`app.ask` は常に対話モードで起動し、会話履歴を保ったまま続けて質問できます。`exit`、`quit`、または `終了` で終了します。最初の質問を引数で渡して始めることもできます（例: `uv run python -m app.ask "LoRAとは何ですか？"`）。
 
 詳しい手順は [lectures/01/problem.md](lectures/01/problem.md) を見てください。
 
@@ -84,7 +86,9 @@ pyproject.toml / uv.lock  依存パッケージとその固定版
 既定モデルは `gemini-3.5-flash-lite` です。環境変数 `AIE_MODEL` で切り替えられます。
 
 ```bash
-AIE_MODEL=gemini-3.5-flash uv run python -m app.ask "LoRAとは何ですか？"
+AIE_MODEL=gemini-3.5-flash uv run python -m app.ask
 ```
+
+起動したら、質問を入力してください。
 
 無料枠には1分あたり・1日あたりのリクエスト上限があります。上限は [Gemini API のレート制限のページ](https://ai.google.dev/gemini-api/docs/rate-limits) で確認してください。
