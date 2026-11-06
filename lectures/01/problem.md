@@ -94,6 +94,4 @@ GitHub の自分の fork で、`lec01` → `main` の PR を作成します。**
 AIE_MODEL=gemini-3.5-flash uv run python -m app.ask
 ```
 
-起動後に `LoRAとは何ですか？` と入力します。
-
 temperature を変えるには、`generate_content` の `config` 引数を調べてみましょう。
